@@ -55,7 +55,7 @@ pydeck
 Pygments
 Pympler
 pyparsing
-pyresparser
+-e ../pyresparser
 pyrsistent
 python-dateutil
 pytz
