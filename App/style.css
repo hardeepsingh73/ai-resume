@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ===== ROOT DESIGN LAYER ===== */
+:root {
+    --primary: #6C63FF;
+    --primary-dark: #4F46E5;
+    --primary-light: #A5B4FC;
+    --secondary: #FF6584;
+    --accent: #00D2FF;
+    --bg-dark: #0A0B10;
+    --bg-card: rgba(16, 18, 27, 0.65);
+    --bg-card-hover: rgba(22, 25, 38, 0.85);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #475569;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --border: rgba(255, 255, 255, 0.05);
+    
+    /* Premium Shadow Profiles */
+    --shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 30px rgba(108, 99, 255, 0.12), 0 0 1px rgba(108, 99, 255, 0.3);
+    
+    --radius: 14px;
+    --radius-sm: 10px;
+    --radius-xs: 6px;
+    --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===== GLOBAL CANVAS SETUP ===== */
+html, body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text-primary) !important;
+    background-color: var(--bg-dark) !important;
+}
+
+/* Architectural Micro-Dot Grid Layer */
+.stApp {
+    background-color: var(--bg-dark) !important;
+    background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 0),
+        linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px) !important;
+    background-size: 20px 20px, 100px 100px, 100px 100px !important;
+    background-position: center center !important;
+}
+
+/* Transparent structural wraps to shield backgrounds */
+.stApp > div, .main, .main .block-container,
+div[data-testid="stAppViewContainer"],
+div[data-testid="stMainBlockContainer"],
+section.main, .block-container, [class*="block-container"], [class*="stEmotionCache"] {
+    background-color: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+.main .block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 4rem !important;
+    max-width: 1200px !important;
+}
+
+/* ===== TYPOGRAPHY & WEIGHT INTERACTION ===== */
+.main p, .main span, .main div, .main li, .main td, .main th,
+.main label, .main .stMarkdown, .main h1, .main h2, .main h3,
+.main h4, .main h5, .main h6 {
+    color: var(--text-primary) !important;
+    letter-spacing: -0.01em;
+}
+.main .stMarkdown p, .main .stMarkdown li {
+    color: var(--text-secondary) !important;
+}
+
+/* ===== CUSTOM TOP NAV DESIGNS (App.py Navigation Linkage) ===== */
+div.stButton > button {
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--border) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: var(--text-secondary) !important;
+    backdrop-filter: blur(8px);
+    transition: var(--transition) !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1rem !important;
+}
+div.stButton > button:hover {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-primary) !important;
+    transform: translateY(-1px);
+}
+/* Focus active layout map selector button state from App.py */
+div.stButton > button[data-testid="baseButton-primary"] {
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.15), rgba(0, 210, 255, 0.08)) !important;
+    border: 1px solid rgba(108, 99, 255, 0.35) !important;
+    color: #FFFFFF !important;
+    box-shadow: var(--shadow-glow) !important;
+    font-weight: 600 !important;
+}
+
+/* ===== BENTO GLASS CARDS ===== */
+.glass-card {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    margin-bottom: 1.2rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+.glass-card:hover {
+    background: var(--bg-card-hover) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+/* Telemetry Detail Rows inside Profile Layouts */
+.info-card {
+    background: rgba(255, 255, 255, 0.015) !important;
+    border: 1px solid rgba(255, 255, 255, 0.03) !important;
+    border-radius: var(--radius-sm);
+    padding: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+.info-card .label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary) !important;
+    opacity: 0.7;
+    margin-bottom: 0.3rem;
+}
+.info-card .value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary) !important;
+}
+
+/* ===== HEADERS ===== */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.section-header .icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-xs);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+.section-header .text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* ===== MICRO METRICS / BULK METERS ===== */
+.stat-badge {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm);
+    padding: 1.4rem 1rem;
+    text-align: center;
+    transition: var(--transition);
+}
+.stat-badge:hover {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+.stat-badge .stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+.stat-badge .stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary) !important;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+}
+
+/* ===== FORM CONTROLS & INPUT FIELDS ===== */
+.stTextInput input, .stTextArea textarea, [data-baseweb="input"] input, [data-baseweb="textarea"] textarea {
+    background: rgba(8, 9, 13, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: var(--radius-xs) !important;
+    color: var(--text-primary) !important;
+    padding: 0.65rem 1rem !important;
+    transition: var(--transition) !important;
+}
+.stTextInput input:focus, .stTextArea textarea:focus, [data-baseweb="input"] input:focus {
+    border-color: rgba(108, 99, 255, 0.4) !important;
+    box-shadow: 0 0 15px rgba(108, 99, 255, 0.08) !important;
+}
+.stForm {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 1.8rem !important;
+}
+
+/* ===== CHIPS & LABELS ===== */
+.level-badge {
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.78rem;
+}
+.level-fresher { background: rgba(108, 99, 255, 0.08) !important; color: #C7D2FE !important; border: 1px solid rgba(108, 99, 255, 0.15) !important; }
+.level-intermediate { background: rgba(0, 210, 255, 0.08) !important; color: #99E9FF !important; border: 1px solid rgba(0, 210, 255, 0.15) !important; }
+.level-experienced { background: rgba(245, 158, 11, 0.08) !important; color: #FDE68A !important; border: 1px solid rgba(245, 158, 11, 0.15) !important; }
+
+/* ===== NOTIFICATION ARCHIVE ===== */
+.tip-card {
+    border-radius: 6px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+}
+.tip-success {
+    background: rgba(16, 185, 129, 0.05) !important;
+    border: 1px solid rgba(16, 185, 129, 0.12) !important;
+    color: #A7F3D0 !important;
+}
+.tip-missing {
+    background: rgba(239, 68, 68, 0.04) !important;
+    border: 1px solid rgba(239, 68, 68, 0.12) !important;
+    color: #FCA5A5 !important;
+}
+
+/* ===== PREMIUM DATAFRAME CONFIGS ===== */
+.stDataFrame {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    background-color: var(--bg-card) !important;
+}
+.stDataFrame [role="columnheader"] {
+    background: rgba(255, 255, 255, 0.02) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    font-size: 0.72rem !important;
+}
+
+/* Progress Sliders & Bars */
+.stProgress > div > div > div > div {
+    background: linear-gradient(90deg, var(--primary), var(--accent)) !important;
+}
+
+/* ===== DRAG & DROP FILE ZONE ===== */
+[data-testid="stFileUploader"] {
+    border: 1px dashed rgba(255, 255, 255, 0.12) !important;
+    border-radius: var(--radius) !important;
+    background: rgba(255, 255, 255, 0.005) !important;
+    padding: 1.5rem !important;
+}
+[data-testid="stFileUploader"]:hover {
+    border-color: rgba(108, 99, 255, 0.3) !important;
+    background: rgba(108, 99, 255, 0.01) !important;
+}
+
+/* ===== SCROLL-BARS & SYSTEM DROPDOWNS ===== */
+[data-baseweb="select"] > div {
+    background: rgba(8, 9, 13, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+[data-baseweb="popover"] ul, [data-baseweb="menu"], [data-baseweb="menu"] ul {
+    background: #0E1017 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ===== RESET ENFORCEMENT ===== */
+#MainMenu, footer { visibility: hidden; }
+header[data-testid="stHeader"] {
+    background: rgba(10, 11, 16, 0.7) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+[data-testid="stSidebar"], [data-testid="collapsedControl"] {
+    display: none !important;
+}

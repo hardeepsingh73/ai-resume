@@ -1,0 +1,67 @@
+HOW TO RUN AI RESUME ANALYZER PROJECT
+=====================================
+
+PREREQUISITES
+-------------
+1. Python 3.9.12 or higher
+2. MySQL (database named 'cv')
+3. Visual Studio Build Tools for C++ (https://aka.ms/vs/17/release/vs_BuildTools.exe)
+
+SETUP INSTRUCTIONS
+-------------------
+
+1. CREATE VIRTUAL ENVIRONMENT
+   Open terminal in project root directory (AI-Resume-Analyzer) and run:
+   python -m venv venvapp
+
+2. ACTIVATE VIRTUAL ENVIRONMENT
+   Windows:
+   venvapp\Scripts\activate
+
+3. INSTALL DEPENDENCIES
+   cd App
+   pip install -r requirements.txt
+   
+   If you encounter C++ build tool errors, install these core packages instead:
+   pip install streamlit pandas nltk plotly pymysql spacy pdfminer.six docx2txt geocoder geopy pyresparser
+
+4. DOWNLOAD SPACY MODEL
+   python -m spacy download en_core_web_sm
+
+5. DATABASE SETUP
+   - Create a MySQL database named 'cv'
+   - Open App/App.py and update database credentials around line 95
+   - Default admin credentials: username='admin', password='admin@resume-analyzer'
+
+6. REPLACE RESUME PARSER
+   - Navigate to: venvapp\Lib\site-packages\pyresparser
+   - Replace resume_parser.py with the one from the pyresparser folder in project root
+
+RUN THE APPLICATION
+-------------------
+From the App folder:
+streamlit run App.py
+
+The application will be available at:
+- Local URL: http://localhost:8501
+- Network URL: http://192.168.1.10:8501
+
+ADMIN CREDENTIALS
+-----------------
+Username: admin
+Password: admin@resume-analyzer
+
+TROUBLESHOOTING
+---------------
+- If you get 'GeocoderUnavailable' error, check your internet connection
+- If you get C++ build tool errors, install Visual Studio Build Tools for C++
+- Make sure MySQL service is running before starting the application
+
+USAGE
+-----
+1. Upload a resume PDF file
+2. View analysis, recommendations, and predictions
+3. Use admin panel to view all user data and analytics
+4. Provide feedback through the feedback form
+
+For more details, see README.md
