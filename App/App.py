@@ -41,7 +41,7 @@ nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True)
 nltk.download('averaged_perceptron_tagger', quiet=True)
 
-from pyresparser import ResumeParser
+from resume_parser import ResumeParser
 
 def get_csv_download_link(df,filename,text):
     csv = df.to_csv(index=False)
