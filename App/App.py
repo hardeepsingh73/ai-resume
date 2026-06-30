@@ -256,8 +256,10 @@ def run():
                 time.sleep(4)
             save_image_path = './Uploaded_Resumes/'+pdf_file.name
             pdf_name = pdf_file.name
+            os.makedirs(os.path.dirname(save_image_path), exist_ok=True)
+
             with open(save_image_path, "wb") as f:
-                f.write(pdf_file.getbuffer())
+                f.write(pdf_name.getbuffer())
             show_pdf(save_image_path)
             resume_data = ResumeParser(save_image_path).get_extracted_data()
             if resume_data:
