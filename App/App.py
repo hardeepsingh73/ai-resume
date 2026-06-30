@@ -5,6 +5,7 @@ import time,datetime
 import pymysql
 import sqlite3
 import subprocess
+import os
 import socket
 import platform
 import geocoder
@@ -25,7 +26,6 @@ from PIL import Image
 from Courses import ds_course,web_course,android_course,ios_course,uiux_course,resume_videos,interview_videos
 import getpass
 import subprocess
-import os
 import nltk
 import spacy
 
@@ -102,9 +102,12 @@ st.set_page_config(
    layout="wide",
    initial_sidebar_state="collapsed",
 )
-with open(os.path.join(os.path.dirname(__file__), 'style.css')) as f:
-    css = f.read()
-st.markdown(f'<style>\n{css}\n</style>', unsafe_allow_html=True)
+try:
+    with open(os.path.join(os.path.dirname(__file__), 'style.css')) as f:
+        css = f.read()
+    st.markdown(f'<style>\n{css}\n</style>', unsafe_allow_html=True)
+except FileNotFoundError:
+    pass
 def run():
     img = Image.open(os.path.join(os.path.dirname(__file__), 'Logo', 'RESUM.png'))
     col_logo, col_title = st.columns([1, 4])
