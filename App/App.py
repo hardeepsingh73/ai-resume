@@ -4,7 +4,7 @@ import base64, random
 import time,datetime
 import pymysql
 import sqlite3
-import subprocess\nimport os
+import subprocess
 import socket
 import platform
 import geocoder
@@ -32,7 +32,7 @@ import spacy
 try:
     spacy.load("en_core_web_sm")
 except OSError:
-    import subprocess\nimport os
+    import subprocess
     subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"], check=True)
 
 nltk.download('stopwords', quiet=True)
