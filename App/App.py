@@ -25,17 +25,25 @@ from streamlit_tags import st_tags
 from PIL import Image
 from Courses import ds_course,web_course,android_course,ios_course,uiux_course,resume_videos,interview_videos
 
+import os
 import nltk
-NLTK_DATA_DIR = os.path.join('C:/Users/hardeep/.gemini/tmp/ai-resume-analyzer', 'nltk_data')
+
+NLTK_DATA_DIR = os.path.join(os.getcwd(), "nltk_data")
+
 if not os.path.exists(NLTK_DATA_DIR):
     os.makedirs(NLTK_DATA_DIR)
 
-# Check if 'stopwords' is available, and if not, download it
-try:
-    nltk.data.find('corpora/stopwords')
-except nltk.downloader.DownloadError:
-    nltk.download('stopwords', download_dir=NLTK_DATA_DIR)
-    nltk.data.path.append(NLTK_DATA_DIR)
+nltk.data.path.append(NLTK_DATA_DIR)
+
+resources = [
+    "stopwords",
+    "punkt",
+    "wordnet",
+    "averaged_perceptron_tagger"
+]
+
+for resource in resources:
+    nltk.download(resource, download_dir=NLTK_DATA_DIR, quiet=True)
 
 def get_csv_download_link(df,filename,text):
     csv = df.to_csv(index=False)
