@@ -15,7 +15,6 @@ import plotly.graph_objects as go
 from geopy.geocoders import Nominatim
 import sys
 sys.path.insert(0, '..')
-from pyresparser import ResumeParser
 from pdfminer3.layout import LAParams, LTTextBox
 from pdfminer3.pdfpage import PDFPage
 from pdfminer3.pdfinterp import PDFResourceManager
@@ -28,22 +27,12 @@ from Courses import ds_course,web_course,android_course,ios_course,uiux_course,r
 import os
 import nltk
 
-NLTK_DATA_DIR = os.path.join(os.getcwd(), "nltk_data")
+nltk.download('stopwords', quiet=True)
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
 
-if not os.path.exists(NLTK_DATA_DIR):
-    os.makedirs(NLTK_DATA_DIR)
-
-nltk.data.path.append(NLTK_DATA_DIR)
-
-resources = [
-    "stopwords",
-    "punkt",
-    "wordnet",
-    "averaged_perceptron_tagger"
-]
-
-for resource in resources:
-    nltk.download(resource, download_dir=NLTK_DATA_DIR, quiet=True)
+from pyresparser import ResumeParser
 
 def get_csv_download_link(df,filename,text):
     csv = df.to_csv(index=False)
