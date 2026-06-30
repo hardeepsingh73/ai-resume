@@ -26,6 +26,13 @@ from Courses import ds_course,web_course,android_course,ios_course,uiux_course,r
 import getpass
 import os
 import nltk
+import spacy
+
+try:
+    spacy.load("en_core_web_sm")
+except OSError:
+    import os
+    os.system("python -m spacy download en_core_web_sm")
 
 nltk.download('stopwords', quiet=True)
 nltk.download('punkt', quiet=True)
