@@ -23,7 +23,7 @@ from pdfminer3.converter import TextConverter
 from streamlit_tags import st_tags
 from PIL import Image
 from Courses import ds_course,web_course,android_course,ios_course,uiux_course,resume_videos,interview_videos
-
+import getpass
 import os
 import nltk
 
@@ -223,7 +223,10 @@ def run():
         sec_token = secrets.token_urlsafe(12)
         host_name = socket.gethostname()
         ip_add = socket.gethostbyname(host_name)
-        dev_user = os.getlogin()
+        try:
+            dev_user = os.getlogin()
+        except OSError:
+            dev_user = getpass.getuser()
         os_name_ver = platform.system() + " " + platform.release()
         g = geocoder.ip('me')
         latlong = g.latlng
