@@ -344,7 +344,7 @@ def extract_name(nlp_text, matcher):
     '''
     pattern = [cs.NAME_PATTERN]
 
-    matcher.add('NAME', pattern)
+    matcher.add('NAME', patterns=pattern)
 
     matches = matcher(nlp_text)
 
